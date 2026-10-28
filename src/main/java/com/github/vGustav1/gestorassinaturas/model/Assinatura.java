@@ -10,6 +10,7 @@ import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Email;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -36,11 +37,61 @@ public class Assinatura {
     @Column(nullable = false)
     private LocalDate dataVencimento;
 
-    @NotBlank(message = "O número do WhatsApp é obrigatório")
+    @Email(message = "E-mail inválido", regexp = ".+@.+\\..+")
+    @NotBlank(message = "O email é obrigatório")
     @Column(nullable = false)
-    private String numeroWhatsapp;
+    private String email;
 
     @Column(nullable = false)
     private Boolean ativo = true;
 
+
+    public Long getId(){
+        return id;
+    }
+
+    public void setId(Long id){
+        this.id = id;
+    }
+
+    public String getNomeServico(){
+        return nomeServico;
+    }
+
+    public void setNomeServico(String nomeServico){
+        this.nomeServico = nomeServico;
+    }
+
+    public BigDecimal getValor(){
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor){
+        this.valor = valor;
+    }
+
+    public LocalDate getDataVencimento(){
+        return dataVencimento;
+    }
+
+    public void setDataVencimento(LocalDate dataVencimento){
+        this.dataVencimento = dataVencimento;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public Boolean getAtivo(){
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo){
+        this.ativo = ativo;   
+    }
 }
+
